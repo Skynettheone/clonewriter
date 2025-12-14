@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { checkOllamaStatus } from "@/lib/ollama";
+import { getVectorStoreInfo } from "@/lib/vector-store.server";
+import { VectorStoreFactory } from "@/lib/vector-stores/factory";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -9,31 +11,37 @@ export async function GET() {
     // Check Ollama status
     const ollamaStatus = await checkOllamaStatus();
 
-    // Check ChromaDB status
-    let chromaStatus = { running: false, collections: 0 };
+    // Check vector store status (supports ChromaDB, Redis, MariaDB, or file-based)
+    let vectorStoreStatus = { 
+      running: false, 
+      type: 'unknown',
+      collections: 0 
+    };
+    
     try {
-      const chromaUrl = process.env.CHROMA_URL || "http://localhost:8000";
-
-      // Check v2 heartbeat endpoint
-      const response = await fetch(`${chromaUrl}/api/v2/heartbeat`, {
-        method: 'GET',
-      }).catch(() => null);
-
-      if (response && response.ok) {
-        chromaStatus = {
+      const storeInfo = await getVectorStoreInfo();
+      const storeType = VectorStoreFactory.getConfiguredType();
+      
+      // Try to get the store instance and check health
+      const store = VectorStoreFactory.create(storeType);
+      const isHealthy = await store.healthCheck();
+      
+      if (isHealthy) {
+        const collection = await store.getOrCreateCollection();
+        vectorStoreStatus = {
           running: true,
-          collections: 0,
+          type: storeType,
+          collections: collection.count || 0,
         };
-      } else {
-        console.log("ChromaDB check failed:", response?.status);
       }
     } catch (error: any) {
-      console.log("ChromaDB not accessible:", error.message);
+      console.log("Vector store not accessible:", error.message);
+      vectorStoreStatus.type = VectorStoreFactory.getConfiguredType();
     }
 
     return NextResponse.json({
       ollama: ollamaStatus,
-      chroma: chromaStatus,
+      vectorStore: vectorStoreStatus,
     });
   } catch (error: any) {
     return NextResponse.json(

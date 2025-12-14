@@ -65,12 +65,13 @@ export default function GenerationSettings({
       {/* Temperature */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium">Temperature</label>
+          <label htmlFor="temperature-slider" className="text-sm font-medium">Temperature</label>
           <span className="text-sm text-muted-foreground font-mono">
             {temperature.toFixed(2)}
           </span>
         </div>
         <input
+          id="temperature-slider"
           type="range"
           min="0"
           max="1"
@@ -78,6 +79,7 @@ export default function GenerationSettings({
           value={temperature}
           onChange={(e) => onTemperatureChange(parseFloat(e.target.value))}
           className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
+          aria-label="Temperature slider"
         />
         <p className="text-xs text-muted-foreground">
           Higher values = more creative, lower values = more focused
@@ -87,12 +89,13 @@ export default function GenerationSettings({
       {/* Max Tokens */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium">Max Length</label>
+          <label htmlFor="max-tokens-slider" className="text-sm font-medium">Max Length</label>
           <span className="text-sm text-muted-foreground font-mono">
             {maxTokens}
           </span>
         </div>
         <input
+          id="max-tokens-slider"
           type="range"
           min="100"
           max="2000"
@@ -100,6 +103,7 @@ export default function GenerationSettings({
           value={maxTokens}
           onChange={(e) => onMaxTokensChange(parseInt(e.target.value))}
           className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
+          aria-label="Max tokens slider"
         />
         <p className="text-xs text-muted-foreground">
           Maximum number of tokens to generate
@@ -109,12 +113,13 @@ export default function GenerationSettings({
       {/* Top P */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <label className="text-sm font-medium">Top P</label>
+          <label htmlFor="top-p-slider" className="text-sm font-medium">Top P</label>
           <span className="text-sm text-muted-foreground font-mono">
             {topP.toFixed(2)}
           </span>
         </div>
         <input
+          id="top-p-slider"
           type="range"
           min="0"
           max="1"
@@ -122,6 +127,7 @@ export default function GenerationSettings({
           value={topP}
           onChange={(e) => onTopPChange(parseFloat(e.target.value))}
           className="w-full h-2 bg-secondary rounded-lg appearance-none cursor-pointer accent-primary"
+          aria-label="Top P slider"
         />
         <p className="text-xs text-muted-foreground">
           Controls diversity of word choices
