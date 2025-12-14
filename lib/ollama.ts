@@ -1,6 +1,6 @@
 import { Ollama } from "ollama";
 
-const MODEL_NAME = process.env.OLLAMA_MODEL || "llama3.2:3b";
+const MODEL_NAME = process.env.OLLAMA_MODEL || "gemma3:1b";
 
 export interface GenerationOptions {
   temperature?: number;

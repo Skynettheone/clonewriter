@@ -64,7 +64,7 @@ RUN chmod +x /docker-entrypoint.sh
 # Set environment variables
 ENV NODE_ENV=production
 ENV OLLAMA_HOST=http://localhost:11434
-ENV OLLAMA_MODEL=llama3.2:1b
+ENV OLLAMA_MODEL=gemma3:1b
 ENV PORT=3000
 ENV HOSTNAME=0.0.0.0
 

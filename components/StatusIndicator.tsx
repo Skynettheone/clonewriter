@@ -8,8 +8,9 @@ interface Status {
     running: boolean;
     models: string[];
   };
-  chroma: {
+  vectorStore: {
     running: boolean;
+    type: string;
     collections: number;
   };
 }
@@ -73,22 +74,27 @@ export default function StatusIndicator() {
         </div>
       )}
       <div className="flex items-center gap-2">
-        {status?.chroma.running ? (
+        {status?.vectorStore?.running ? (
           <CheckCircle2 className="w-4 h-4 text-green-500" />
         ) : (
           <XCircle className="w-4 h-4 text-red-500" />
         )}
         <span className="text-sm">
-          ChromaDB:{" "}
+          Vector Store ({status?.vectorStore?.type || 'unknown'}):{" "}
           <span
             className={
-              status?.chroma.running ? "text-green-600" : "text-red-600"
+              status?.vectorStore?.running ? "text-green-600" : "text-red-600"
             }
           >
-            {status?.chroma.running ? "Running" : "Not running"}
+            {status?.vectorStore?.running ? "Running" : "Not running"}
           </span>
         </span>
       </div>
+      {status?.vectorStore?.running && status.vectorStore.collections > 0 && (
+        <div className="ml-6 text-xs text-muted-foreground">
+          Collections: {status.vectorStore.collections}
+        </div>
+      )}
     </div>
   );
 }

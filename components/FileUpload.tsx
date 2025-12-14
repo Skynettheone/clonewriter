@@ -116,6 +116,7 @@ export default function FileUpload({ onUploadComplete }: FileUploadProps) {
           accept=".csv,.json,.txt"
           onChange={handleFileSelect}
           className="hidden"
+          aria-label="Upload writing samples"
         />
       </div>
 
