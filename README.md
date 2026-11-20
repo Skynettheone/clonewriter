@@ -2,9 +2,15 @@
 
 Build a 100% private AI agent that generates content in your personal writing style using local LLMs powered by Ollama.
 
-![CloneWriter](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
-![TypeScript](https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript)
-![Ollama](https://img.shields.io/badge/Ollama-Local%20LLM-green?style=for-the-badge)
+![Next.js](https://img.shields.io/badge/Next.js_14-000000?style=flat-square&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript_5-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=flat-square&logo=tailwindcss&logoColor=white)
+![Ollama](https://img.shields.io/badge/Ollama-local_LLM-000000?style=flat-square&logo=ollama&logoColor=white)
+![ChromaDB](https://img.shields.io/badge/ChromaDB-RAG-FF6446?style=flat-square)
+![Transformers.js](https://img.shields.io/badge/Transformers.js-embeddings-FFD21E?style=flat-square&logo=huggingface&logoColor=black)
+![Docker](https://img.shields.io/badge/Docker-ready-2496ED?style=flat-square&logo=docker&logoColor=white)
+![Privacy](https://img.shields.io/badge/100%25-local_%26_private-22c55e?style=flat-square)
+![License](https://img.shields.io/badge/license-MIT-yellow?style=flat-square)
 
 <img width="1751" height="2934" alt="screencapture-localhost-3000-2025-11-01-21_17_00" src="https://github.com/user-attachments/assets/6b786c40-4224-4a94-a68b-32d820aa9f64" />
 <img width="1751" height="3576" alt="screencapture-localhost-3000-2025-11-01-23_38_27" src="https://github.com/user-attachments/assets/63c568c2-b494-4d6d-b16c-6e76bcd7a847" />
